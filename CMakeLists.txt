@@ -10,6 +10,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_index_cpp REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(tf2 REQUIRED)
@@ -42,6 +43,8 @@ ament_target_dependencies(ahrs_driver_node
   sensor_msgs
   nav_msgs
   geometry_msgs
+  ament_index_cpp
+  tf2_geometry_msgs
 )
 
 add_executable(imu_tf_node
@@ -54,6 +57,7 @@ ament_target_dependencies(imu_tf_node
   std_msgs
   sensor_msgs
   tf2_geometry_msgs
+  ament_index_cpp
 )
 
 install(

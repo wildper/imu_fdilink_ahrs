@@ -2,6 +2,7 @@
 #define FDILINK_DATA_STRUCT_H_
 
 #include <iostream>
+#include <cstdint>
 
 namespace FDILink {
 
