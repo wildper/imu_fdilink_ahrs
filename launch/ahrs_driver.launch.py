@@ -19,7 +19,7 @@ def generate_launch_description():
             'serial_port_': '/dev/fdilink_ahrs',
             'serial_baud_': 921600,
             'imu_topic': '/trunk_imu',  # remap imu:=trunk_imu
-            'imu_frame_id_': 'gyro_link',  # gyro_link:=world
+            'imu_frame_id_': 'world',  # gyro_link:=world
             'mag_pose_2d_topic': '/mag_pose_2d',
             'Magnetic_topic': '/magnetic',
             'Euler_angles_topic': '/euler_angles',
