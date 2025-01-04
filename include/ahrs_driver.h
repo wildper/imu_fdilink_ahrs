@@ -2,11 +2,11 @@
 #define BASE_DRIVER_H_
 
 #include "fdilink_data_struct.h"
+#include "serial/serial.h"
 #include "crc_table.h"
 
 #include <inttypes.h>
 #include <math.h>
-#include <serial/serial.h>
 #include <unistd.h>
 
 #include "rclcpp/rclcpp.hpp"
