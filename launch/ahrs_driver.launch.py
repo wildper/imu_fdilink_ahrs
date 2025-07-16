@@ -14,12 +14,13 @@ def generate_launch_description():
     ahrs_driver = Node(
         package="fdilink_ahrs",
         executable="ahrs_driver_node",
+        name="ahrs_driver",
         parameters=[{
             'if_debug_': False,
             'serial_port_': '/dev/fdilink_ahrs',
             'serial_baud_': 921600,
-            'imu_topic': '/trunk_imu',  # remap imu:=trunk_imu
-            'imu_frame_id_': 'world',  # gyro_link:=world
+            'imu_topic': '/wheeltec/imu',  # remap imu:=trunk_imu
+            'imu_frame_id_': 'imu_link',  # gyro_link:=world
             'mag_pose_2d_topic': '/mag_pose_2d',
             'Magnetic_topic': '/magnetic',
             'Euler_angles_topic': '/euler_angles',
@@ -31,25 +32,26 @@ def generate_launch_description():
         output="screen"
     )
 
-    imu_tf = Node(
-        package="fdilink_ahrs",
-        executable="imu_tf_node",
-        parameters=[{
-            'imu_topic': '/trunk_imu',
-            'world_frame_id': '/world',
-            'imu_frame_id': '/gyro_link',
-            'position_x': 1,
-            'position_y': 1,
-            'position_z': 1,
-        }],
-    )
+    # imu_tf = Node(
+    #     package="fdilink_ahrs",#ttyUSB0
+    #     executable="imu_tf_node",
+    #     parameters=[{
+    #         'imu_topic': '/trunk_imu',
+    #         'world_frame_id': '/world',
+    #         'imu_frame_id': '/gyro_link',
+    #         'position_x': 1,
+    #         'position_y': 1,
+    #         'position_z': 1,
+    #     }],
+    # )
 
     # load target step by step
-    load_sensors = TimerAction(
-        period=0.0,
-        actions=[ahrs_driver, imu_tf]
-    )
+    # load_sensors = TimerAction(
+    #     period=0.0,
+    #     actions=[ahrs_driver]
+    #     # actions=[ahrs_driver, imu_tf]
+    # )
 
-    ld = LaunchDescription([load_sensors])
+    ld = LaunchDescription([ahrs_driver])
 
     return ld
